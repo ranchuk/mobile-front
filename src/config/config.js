@@ -1,5 +1,5 @@
 const config = {
-  host: "http://localhost:5000"
+  host: "http://localhost:3001"
 };
 
 export default config;

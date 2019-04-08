@@ -16,14 +16,33 @@ class Navbar extends Component {
     const authLinks = (
       <nav className="nav">
         <ul className="nav__list">
-          <NavLink className="nav__item" to="/dashboard" activeClassName="nav__item-active">
-            <li className="nav__item__link">Dashbaord</li>
+          <NavLink
+            className="nav__item"
+            to="/dashboard"
+            activeClassName="nav__item-active"
+          >
+            <li className="nav__item__link">Explore</li>
           </NavLink>
-          <NavLink className="nav__item" to="/edituser" activeClassName="nav__item-active">
+          <NavLink
+            className="nav__item"
+            to="/edituser"
+            activeClassName="nav__item-active"
+          >
             <li className="nav__item__link">Edit user</li>
           </NavLink>
-          <NavLink className="nav__item" to="/manageCars" activeClassName="nav__item-active">
-            <li className="nav__item__link">Mangage cars</li>
+          <NavLink
+            className="nav__item"
+            to="/manageCars"
+            activeClassName="nav__item-active"
+          >
+            <li className="nav__item__link">Wishlist</li>
+          </NavLink>
+          <NavLink
+            className="nav__item"
+            to="/manageCars"
+            activeClassName="nav__item-active"
+          >
+            <li className="nav__item__link">My Cart</li>
           </NavLink>
           <NavLink to="/" onClick={this.onLogoutClick} className="nav__item">
             <li className="nav__item__link">Logout</li>
@@ -40,7 +59,9 @@ const mapStateToProps = state => ({
   userData: state.userData
 });
 
-export default withRouter(connect(
-  mapStateToProps,
-  { logout, logoutLoading }
-)(Navbar));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { logout, logoutLoading }
+  )(Navbar)
+);

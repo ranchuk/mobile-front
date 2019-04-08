@@ -1,6 +1,13 @@
- import { LOGIN,LOGIN_LOADING,LOGOUT,LOGOUT_LOADING,EDIT,EDIT_LOADING } from "./types";
- import config from "../config/config";
- import axios from "axios";
+import {
+  LOGIN,
+  LOGIN_LOADING,
+  LOGOUT,
+  LOGOUT_LOADING,
+  EDIT,
+  EDIT_LOADING
+} from "./types";
+import config from "../config/config";
+import axios from "axios";
 
 // export const getUser = () => {
 //   const serializeState = JSON.parse(sessionStorage.getItem("userData"));
@@ -10,14 +17,12 @@
 //   };
 // };
 
-
-  
 export const editUserLoading = () => {
   return {
     type: EDIT_LOADING
   };
-};  
-export const editUser = (data) => {
+};
+export const editUser = data => {
   const response = axios.post(`${config.host}/edit_user`, data);
   return {
     type: EDIT,
@@ -26,12 +31,12 @@ export const editUser = (data) => {
 };
 
 export const loginLoading = () => {
-    return {
-      type: LOGIN_LOADING
-    };
+  return {
+    type: LOGIN_LOADING
+  };
 };
-  
-export const login = (data) => {
+
+export const login = data => {
   const response = axios.post(`${config.host}/login`, data);
   return {
     type: LOGIN,
@@ -49,4 +54,3 @@ export const logout = () => {
     type: LOGOUT
   };
 };
-
