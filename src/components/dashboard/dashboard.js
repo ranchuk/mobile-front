@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import Spinner from "../common/spinner/spinner";
 import Navbar from "../common/navbar/navbar";
+import { getAllProducts } from "../../actions/productsActions";
 
 class DashBoard extends Component {
   constructor(props) {
@@ -10,7 +10,8 @@ class DashBoard extends Component {
     this.state = {
       username: "",
       firstName: "",
-      lastName: ""
+      lastName: "",
+      allProducts: []
     };
   }
 
@@ -18,17 +19,22 @@ class DashBoard extends Component {
     if (!sessionStorage.getItem("userData")) {
       this.props.history.push("/");
     }
+
     this.setState({
       username: this.props.userData.userData.username,
       firstName: this.props.userData.userData.firstName,
       lastName: this.props.userData.userData.lastName
     });
+
+    this.props.getAllProducts();
   }
 
   componentWillReceiveProps(nextProps) {
     if (!sessionStorage.getItem("userData")) {
       this.props.history.push("/");
     }
+
+    this.setState({ allProducts: nextProps.productsData.allProducts });
   }
 
   onChange = e => {
@@ -36,6 +42,20 @@ class DashBoard extends Component {
   };
 
   render() {
+    const products = this.state.allProducts.map(product => {
+      const { productId, username, title, category, description } = product;
+      return (
+        <div className="card">
+          <div className="card__content">
+            <span>{title}</span>
+            <span>{category}</span>
+            <span>{description}</span>
+            <span>{username}</span>
+            <span>{productId}</span>
+          </div>
+        </div>
+      );
+    });
     return (
       <div>
         <Navbar />
@@ -44,7 +64,7 @@ class DashBoard extends Component {
             <span className="dashboard__username">
               Welcome {this.state.firstName} {this.state.lastName}
             </span>
-            <form onSubmit={this.onSubmit} className="search__form">
+            <form onSubmit={this.onSubmit} className="dashboard__search__form">
               <div className="search__form__group">
                 <input
                   name="username"
@@ -67,7 +87,7 @@ class DashBoard extends Component {
               </div>
               <p className="search__error">{this.state.error}</p>
             </form>
-            <div className="dashboard__content" />
+            <div className="dashboard__products">{products}</div>
           </div>
         </div>
       </div>
@@ -76,11 +96,12 @@ class DashBoard extends Component {
 }
 const mapStateToProps = state => {
   return {
-    userData: state.userData
+    userData: state.userData,
+    productsData: state.productsData
   };
 };
 
 export default connect(
   mapStateToProps,
-  {}
+  { getAllProducts }
 )(DashBoard);

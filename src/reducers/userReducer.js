@@ -3,8 +3,8 @@ import {
   LOGIN_LOADING,
   LOGOUT_LOADING,
   LOGOUT,
-  EDIT,
-  EDIT_LOADING
+  EDIT
+  // EDIT_LOADING
 } from "../actions/types";
 
 const initialState = {
@@ -77,11 +77,11 @@ export default function(state = initialState, action) {
         loading: false
       };
 
-    case EDIT_LOADING:
-      return {
-        ...state,
-        loading: true
-      };
+    // case EDIT_LOADING:
+    //   return {
+    //     ...state,
+    //     loading: true
+    //   };
     default:
       return state;
   }

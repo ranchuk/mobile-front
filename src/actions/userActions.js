@@ -3,8 +3,8 @@ import {
   LOGIN_LOADING,
   LOGOUT,
   LOGOUT_LOADING,
-  EDIT,
-  EDIT_LOADING
+  EDIT
+  // EDIT_LOADING
 } from "./types";
 import config from "../config/config";
 import axios from "axios";
@@ -17,11 +17,11 @@ import axios from "axios";
 //   };
 // };
 
-export const editUserLoading = () => {
-  return {
-    type: EDIT_LOADING
-  };
-};
+// export const editUserLoading = () => {
+//   return {
+//     type: EDIT_LOADING
+//   };
+// };
 export const editUser = data => {
   const response = axios.post(`${config.host}/edit_user`, data);
   return {

@@ -15,12 +15,11 @@ class App extends Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
-              <Switch>
-                <Route exact path="/" component={Login} />
-                <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/edituser" component={EditUser} />
-                <Route exact path="/manageCars" component={ManageCars} />
-              </Switch>
+          <Switch>
+            <Route exact path="/" component={Login} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/edituser" component={EditUser} />
+          </Switch>
         </BrowserRouter>
       </Provider>
     );
