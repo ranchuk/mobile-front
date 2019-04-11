@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Navbar from "../common/navbar/navbar";
-import { getAllProducts } from "../../actions/productsActions";
+import { getAllProducts, addCart } from "../../actions/productsActions";
 
 class DashBoard extends Component {
   constructor(props) {
@@ -11,7 +11,9 @@ class DashBoard extends Component {
       username: "",
       firstName: "",
       lastName: "",
-      allProducts: []
+      allProducts: [],
+      filteredProducts: [],
+      searchTerm: ""
     };
   }
 
@@ -34,24 +36,49 @@ class DashBoard extends Component {
       this.props.history.push("/");
     }
 
-    this.setState({ allProducts: nextProps.productsData.allProducts });
+    this.setState({
+      allProducts: nextProps.productsData.allProducts,
+      filteredProducts: nextProps.productsData.allProducts
+    });
   }
 
   onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    const filteredProducts = this.state.allProducts.filter(product => {
+      return product.title.includes(e.target.value.trim());
+      // || product.category.includes(e.target.value)
+    });
+    this.setState({ filteredProducts, [e.target.name]: e.target.value });
+  };
+
+  addCart = productId => {
+    const username = this.state.username;
+    this.props.addCart({ productId, username });
   };
 
   render() {
-    const products = this.state.allProducts.map(product => {
+    const products = this.state.filteredProducts.map(product => {
       const { productId, username, title, category, description } = product;
       return (
-        <div className="card">
+        <div key={productId} className="card">
           <div className="card__content">
             <span>{title}</span>
             <span>{category}</span>
             <span>{description}</span>
             <span>{username}</span>
             <span>{productId}</span>
+          </div>
+          <div className="card__button">
+            <input
+              productid={productId}
+              type="submit"
+              value="Add to cart"
+              className="btn btn-primary card__button__btn"
+              onClick={e =>
+                this.addCart(
+                  e.target.attributes.getNamedItem("productId").value
+                )
+              }
+            />
           </div>
         </div>
       );
@@ -65,27 +92,25 @@ class DashBoard extends Component {
               Welcome {this.state.firstName} {this.state.lastName}
             </span>
             <form onSubmit={this.onSubmit} className="dashboard__search__form">
-              <div className="search__form__group">
-                <input
-                  name="username"
-                  type="text"
-                  value={this.state.username}
-                  onChange={this.onChange}
-                  className="search__input"
-                  placeholder="search product"
-                  required
-                  autoFocus
-                />
-              </div>
-
-              <div className="search__btn">
-                <input
-                  type="submit"
-                  value="Search"
-                  className="btn btn-primary"
-                />
-              </div>
-              <p className="search__error">{this.state.error}</p>
+              <input
+                className="dashboard__search__form__input"
+                name="searchTerm"
+                type="text"
+                value={this.state.searchTerm}
+                onChange={this.onChange}
+                placeholder="search product"
+                required
+                autoFocus
+              />
+              <input
+                type="submit"
+                value="Search"
+                className="dashboard__search__form__button"
+              />
+              <p className="search__error">
+                sddddddddddddddddd{this.state.error}
+              </p>
+              ={" "}
             </form>
             <div className="dashboard__products">{products}</div>
           </div>
@@ -103,5 +128,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getAllProducts }
+  { getAllProducts, addCart }
 )(DashBoard);

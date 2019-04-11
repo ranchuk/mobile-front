@@ -1,12 +1,13 @@
 import {
-  ADD_CAR,
-  REMOVE_CAR,
-  GET_ALL_PRODUCTS,
-  LOGOUT
+  ADD_CART,
+  // REMOVE_CAR,
+  GET_ALL_PRODUCTS
+  // LOGOUT
 } from "../actions/types";
 
 const initialState = {
   userProducts: [],
+  cartProducts: [],
   allProducts: [],
   errorAdd: "",
   successAdd: "",
@@ -29,33 +30,13 @@ export default function(state = initialState, action) {
         loading: false
       };
 
-    // case ADD_CAR:
-    //   if (action.payload.status) {
-    //     const newCar = {
-    //       username: action.payload.data.username,
-    //       carNumber: action.payload.data.carNumber,
-    //       isInside: 0
-    //     };
-    //     return {
-    //       ...state,
-    //       cars: [...state.cars, newCar],
-    //       loading: false,
-    //       errorAdd: "",
-    //       successAdd: `Car number ${
-    //         action.payload.data.carNumber
-    //       } Added succesfully`
-    //     };
-    //   } else {
-    //     return {
-    //       ...state,
-    //       cars: [...state.cars],
-    //       loading: false,
-    //       errorAdd: `Car  number ${
-    //         action.payload.data.carNumber
-    //       } already exist`,
-    //       successAdd: ""
-    //     };
-    //   }
+    case ADD_CART:
+      if (action.payload.status) {
+        return {
+          ...state
+        };
+      }
+      break;
 
     // case REMOVE_CAR:
     //   const cars = state.cars.filter(car => {

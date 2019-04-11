@@ -4,7 +4,7 @@ import Dashboard from "./components/dashboard/dashboard";
 // import AddCar from "./components/addCar/addCar";
 // import RemoveCar from './components/removeCar/removeCar';
 import EditUser from "./components/editUser/editUser";
-import ManageCars from "./components/manageCars/manageCars";
+// import ManageCars from "./components/manageCars/manageCars";
 import Login from "./components/login/login";
 import { Provider } from "react-redux";
 import store from "./store/store";

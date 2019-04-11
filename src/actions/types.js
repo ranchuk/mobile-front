@@ -1,4 +1,4 @@
-export const ADD_CAR = "ADD_CAR";
+export const ADD_CART = "ADD_CART";
 export const REMOVE_CAR = "REMOVE_CAR";
 export const GET_ALL_CARS = "GET_ALL_CARS";
 export const CARS_LOADING = "GET_ALL_CARS_LOADING";

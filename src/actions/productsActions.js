@@ -1,7 +1,7 @@
 import axios from "axios";
 import config from "../config/config";
 
-import { GET_USER_PRODUCTS, GET_ALL_PRODUCTS } from "./types";
+import { GET_USER_PRODUCTS, GET_ALL_PRODUCTS, ADD_CART } from "./types";
 
 export const getUserProducts = username => {
   const response = axios.get(
@@ -20,13 +20,14 @@ export const getAllProducts = () => {
   };
 };
 
-// export const addCar = data => {
-//   const response = axios.post(`${config.host}/add_car`, data);
-//   return {
-//     type: ADD_CAR,
-//     payload: response
-//   };
-// };
+export const addCart = data => {
+  console.log(data);
+  const response = axios.post(`${config.host}/add_cart`, data);
+  return {
+    type: ADD_CART,
+    payload: response
+  };
+};
 
 // export const removeCar = data => {
 //   console.log(data);
