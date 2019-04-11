@@ -23,13 +23,7 @@ class Navbar extends Component {
           >
             <li className="nav__item__link">Explore</li>
           </NavLink>
-          <NavLink
-            className="nav__item"
-            to="/edituser"
-            activeClassName="nav__item-active"
-          >
-            <li className="nav__item__link">Edit user</li>
-          </NavLink>
+
           <NavLink
             className="nav__item"
             to="/manageCars"
@@ -39,10 +33,17 @@ class Navbar extends Component {
           </NavLink>
           <NavLink
             className="nav__item"
-            to="/manageCars"
+            to="/myCart"
             activeClassName="nav__item-active"
           >
             <li className="nav__item__link">My Cart</li>
+          </NavLink>
+          <NavLink
+            className="nav__item"
+            to="/edituser"
+            activeClassName="nav__item-active"
+          >
+            <li className="nav__item__link">Edit user</li>
           </NavLink>
           <NavLink to="/" onClick={this.onLogoutClick} className="nav__item">
             <li className="nav__item__link">Logout</li>

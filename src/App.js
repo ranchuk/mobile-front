@@ -4,6 +4,7 @@ import Dashboard from "./components/dashboard/dashboard";
 // import AddCar from "./components/addCar/addCar";
 // import RemoveCar from './components/removeCar/removeCar';
 import EditUser from "./components/editUser/editUser";
+import MyCart from "./components/myCart/myCart";
 // import ManageCars from "./components/manageCars/manageCars";
 import Login from "./components/login/login";
 import { Provider } from "react-redux";
@@ -19,6 +20,7 @@ class App extends Component {
             <Route exact path="/" component={Login} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/edituser" component={EditUser} />
+            <Route exact path="/myCart" component={MyCart} />
           </Switch>
         </BrowserRouter>
       </Provider>

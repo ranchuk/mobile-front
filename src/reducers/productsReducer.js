@@ -1,6 +1,6 @@
 import {
   ADD_CART,
-  // REMOVE_CAR,
+  REMOVE_CART,
   GET_ALL_PRODUCTS
   // LOGOUT
 } from "../actions/types";
@@ -38,19 +38,19 @@ export default function(state = initialState, action) {
       }
       break;
 
-    // case REMOVE_CAR:
-    //   const cars = state.cars.filter(car => {
-    //     return action.payload.data["carNumber"] !== car["carNumber"];
-    //   });
-    //   return {
-    //     ...state,
-    //     cars,
-    //     loading: false,
-    //     errorRemove: "",
-    //     successRemove: `Car number ${
-    //       action.payload.data.carNumber
-    //     } Removed succesfully`
-    //   };
+    case REMOVE_CART:
+      const userProducts = state.userProducts.filter(product => {
+        return action.payload.data["productId"] !== product["productId"];
+      });
+      return {
+        ...state,
+        userProducts,
+        loading: false,
+        errorRemove: "",
+        successRemove: `Car number ${
+          action.payload.data.carNumber
+        } Removed succesfully`
+      };
 
     // case LOGOUT:
     //   return {
