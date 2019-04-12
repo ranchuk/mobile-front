@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Dashboard from "./components/dashboard/dashboard";
 import EditUser from "./components/editUser/editUser";
+import AddProduct from "./components/addProduct/addProduct";
 import MyCart from "./components/myCart/myCart";
 import MyProducts from "./components/myProducts/myProducts";
 import Login from "./components/login/login";
@@ -18,6 +19,7 @@ class App extends Component {
             <Route exact path="/" component={Login} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/edituser" component={EditUser} />
+            <Route exact path="/addProduct" component={AddProduct} />
             <Route exact path="/myCart" component={MyCart} />
             <Route exact path="/myProducts" component={MyProducts} />
           </Switch>

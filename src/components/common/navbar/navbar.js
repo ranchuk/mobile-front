@@ -40,6 +40,13 @@ class Navbar extends Component {
           </NavLink>
           <NavLink
             className="nav__item"
+            to="/addProduct"
+            activeClassName="nav__item-active"
+          >
+            <li className="nav__item__link">Add Product</li>
+          </NavLink>
+          <NavLink
+            className="nav__item"
             to="/edituser"
             activeClassName="nav__item-active"
           >
