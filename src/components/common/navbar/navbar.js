@@ -26,10 +26,10 @@ class Navbar extends Component {
 
           <NavLink
             className="nav__item"
-            to="/manageCars"
+            to="/myProducts"
             activeClassName="nav__item-active"
           >
-            <li className="nav__item__link">Wishlist</li>
+            <li className="nav__item__link">My Products</li>
           </NavLink>
           <NavLink
             className="nav__item"

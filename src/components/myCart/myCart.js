@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Navbar from "../common/navbar/navbar";
-import { getAllProducts, addCart } from "../../actions/productsActions";
+import { getCartProducts, removeCart } from "../../actions/productsActions";
 
 class MyCart extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class MyCart extends Component {
       username: "",
       firstName: "",
       lastName: "",
-      allProducts: [],
+      cartProducts: [],
       filteredProducts: [],
       searchTerm: ""
     };
@@ -22,13 +22,16 @@ class MyCart extends Component {
       this.props.history.push("/");
     }
 
-    this.setState({
-      username: this.props.userData.userData.username,
-      firstName: this.props.userData.userData.firstName,
-      lastName: this.props.userData.userData.lastName
-    });
-
-    this.props.getAllProducts();
+    this.setState(
+      {
+        username: this.props.userData.userData.username,
+        firstName: this.props.userData.userData.firstName,
+        lastName: this.props.userData.userData.lastName
+      },
+      () => {
+        this.props.getCartProducts(this.state.username);
+      }
+    );
   }
 
   componentWillReceiveProps(nextProps) {
@@ -37,27 +40,34 @@ class MyCart extends Component {
     }
 
     this.setState({
-      allProducts: nextProps.productsData.allProducts,
-      filteredProducts: nextProps.productsData.allProducts
+      cartProducts: nextProps.productsData.cartProducts,
+      filteredProducts: nextProps.productsData.cartProducts
     });
   }
 
   onChange = e => {
-    const filteredProducts = this.state.allProducts.filter(product => {
+    const filteredProducts = this.state.cartProducts.filter(product => {
       return product.title.includes(e.target.value.trim());
       // || product.category.includes(e.target.value)
     });
     this.setState({ filteredProducts, [e.target.name]: e.target.value });
   };
 
-  addCart = productId => {
+  removeCart = productId => {
     const username = this.state.username;
-    this.props.addCart({ productId, username });
+    this.props.removeCart({ productId, username });
   };
 
   render() {
     const products = this.state.filteredProducts.map(product => {
-      const { productId, username, title, category, description } = product;
+      const {
+        productId,
+        username,
+        title,
+        category,
+        description,
+        phoneNumber
+      } = product;
       return (
         <div key={productId} className="card">
           <div className="card__content">
@@ -66,6 +76,7 @@ class MyCart extends Component {
             <span>{description}</span>
             <span>{username}</span>
             <span>{productId}</span>
+            <span>{phoneNumber}</span>
           </div>
           <div className="card__button">
             <input
@@ -74,7 +85,7 @@ class MyCart extends Component {
               value="Remove from cart"
               className="btn btn-primary btn__remove"
               onClick={e =>
-                this.addCart(
+                this.removeCart(
                   e.target.attributes.getNamedItem("productId").value
                 )
               }
@@ -128,5 +139,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getAllProducts }
+  { getCartProducts, removeCart }
 )(MyCart);
