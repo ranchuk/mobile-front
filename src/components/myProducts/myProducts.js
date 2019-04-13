@@ -16,7 +16,8 @@ class MyProducts extends Component {
       lastName: "",
       userProducts: [],
       filteredProducts: [],
-      searchTerm: ""
+      searchTermTitle: "",
+      searchTermCategory: ""
     };
   }
 
@@ -50,8 +51,10 @@ class MyProducts extends Component {
 
   onChange = e => {
     const filteredProducts = this.state.userProducts.filter(product => {
-      return product.title.includes(e.target.value.trim());
-      // || product.category.includes(e.target.value)
+      return (
+        product.title.includes(e.target.value.trim()) ||
+        product.category.includes(e.target.value)
+      );
     });
     this.setState({ filteredProducts, [e.target.name]: e.target.value });
   };
@@ -108,23 +111,23 @@ class MyProducts extends Component {
             <form onSubmit={this.onSubmit} className="dashboard__search__form">
               <input
                 className="dashboard__search__form__input"
-                name="searchTerm"
+                name="searchTermTitle"
                 type="text"
-                value={this.state.searchTerm}
+                value={this.state.searchTermTitle}
                 onChange={this.onChange}
                 placeholder="search product"
                 required
                 autoFocus
               />
               <input
-                type="submit"
-                value="Search"
-                className="dashboard__search__form__button"
+                className="dashboard__search__form__input dashboard__search__form__right"
+                name="searchTermCategory"
+                type="text"
+                value={this.state.searchTermCategory}
+                onChange={this.onChange}
+                placeholder="search by category"
+                autoFocus
               />
-              <p className="search__error">
-                sddddddddddddddddd{this.state.error}
-              </p>
-              ={" "}
             </form>
             <div className="dashboard__products">{products}</div>
           </div>
