@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Navbar from "../common/navbar/navbar";
 import { getCartProducts, removeCart } from "../../actions/productsActions";
+import NavbarHeader from "../common/navbar-header/navbar-header"
 
 class MyCart extends Component {
   constructor(props) {
@@ -104,6 +105,7 @@ class MyCart extends Component {
         <Navbar />
         <div className="content">
           <div className="dashboard">
+          <NavbarHeader />
             <span className="dashboard__username">
               Welcome {this.state.firstName} {this.state.lastName}
             </span>

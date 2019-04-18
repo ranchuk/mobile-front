@@ -29,4 +29,7 @@ html {
     min-height: 100vh;
     background-color: #2f333a;
     // padding:2rem 0 0 2rem;
+    @media screen and (max-width:765px){
+       margin: unset;
+      }
 }

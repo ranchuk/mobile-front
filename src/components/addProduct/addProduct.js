@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addProduct } from "../../actions/productsActions";
 import Navbar from "../common/navbar/navbar";
+import NavbarHeader from "../common/navbar-header/navbar-header"
 
 class AddProduct extends Component {
   constructor(props) {
@@ -54,6 +55,8 @@ class AddProduct extends Component {
 
         <div className="content">
           <div className="edituser">
+          <NavbarHeader />
+
             <div className="edituser__content">
               <div className="edituser__header">
                 <h1>Add product</h1>

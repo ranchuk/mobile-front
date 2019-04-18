@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { editUser } from "../../actions/userActions";
 import Spinner from "../common/spinner/spinner";
 import Navbar from "../common/navbar/navbar";
+import NavbarHeader from "../common/navbar-header/navbar-header"
 
 class EditUser extends Component {
   constructor(props) {
@@ -70,6 +71,7 @@ class EditUser extends Component {
 
           <div className="content">
             <div className="edituser">
+            <NavbarHeader />
               <div className="edituser__content">
                 <div className="edituser__header">
                   <h1>Edit user</h1>

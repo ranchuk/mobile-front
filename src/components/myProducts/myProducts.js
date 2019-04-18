@@ -5,6 +5,7 @@ import {
   getUserProducts,
   removeMyProduct
 } from "../../actions/productsActions";
+import NavbarHeader from "../common/navbar-header/navbar-header"
 
 class MyProducts extends Component {
   constructor(props) {
@@ -105,6 +106,7 @@ class MyProducts extends Component {
         <Navbar />
         <div className="content">
           <div className="dashboard">
+          <NavbarHeader />
             <span className="dashboard__username">
               Welcome {this.state.firstName} {this.state.lastName}
             </span>

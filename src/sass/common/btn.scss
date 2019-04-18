@@ -5,7 +5,9 @@
   font-size: 1.6rem;
   cursor: pointer;
   transition: all 0.2s;
-
+  @media screen and (max-width:765px){
+  padding: 5px 10px;
+  }
   &-primary {
     background-color: $color-blueful;
     color: $color-white;

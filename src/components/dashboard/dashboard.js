@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Navbar from "../common/navbar/navbar";
+import NavbarHeader from "../common/navbar-header/navbar-header"
 import {
   getAllProducts,
   addCart,
@@ -84,6 +85,8 @@ class DashBoard extends Component {
     }, 500);
   };
 
+  
+
   render() {
     const products = this.state.filteredProducts.map(product => {
       const {
@@ -151,6 +154,9 @@ class DashBoard extends Component {
         <Navbar />
         <div className="content">
           <div className="dashboard">
+          <NavbarHeader
+         
+          />
             <span className="dashboard__username">
               Welcome {this.state.firstName} {this.state.lastName}
             </span>
