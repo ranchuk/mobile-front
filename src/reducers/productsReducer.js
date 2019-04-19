@@ -34,19 +34,15 @@ export default function(state = initialState, action) {
       };
 
     case ADD_CART:
-      if (action.payload.status) {
-        return {
-          ...state
-        };
-      }
-      break;
+      return {
+        ...state,
+        cartProducts: [...action.payload.data.data]
+      };
 
     case ADD_PRODUCT:
       if (action.payload.status) {
         return {
-          ...state,
-          allProducts: [...state.allProducts],
-          userProducts: [...state.userProducts]
+          ...state
         };
       }
       break;

@@ -5,22 +5,25 @@
   font-size: 1.6rem;
   cursor: pointer;
   transition: all 0.2s;
-  @media screen and (max-width:765px){
-  padding: 5px 10px;
+  @media screen and (max-width: 765px) {
+    padding: 5px 10px;
   }
   &-primary {
     background-color: $color-blueful;
     color: $color-white;
     font-weight: 600;
-    &:focus {
-      outline: none;
-    }
     &:hover {
       background-color: $color-blueful-dark;
+    }
+    &:focus {
+      outline: none;
     }
   }
 
   &__remove {
-    background-color: red;
+    background-color: $color-redful;
+    &:hover {
+      background-color: $color-redful-dark;
+    }
   }
 }

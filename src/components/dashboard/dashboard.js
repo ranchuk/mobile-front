@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Navbar from "../common/navbar/navbar";
-import NavbarHeader from "../common/navbar-header/navbar-header"
+import NavbarHeader from "../common/navbar-header/navbar-header";
 import {
   getAllProducts,
   addCart,
@@ -69,23 +69,12 @@ class DashBoard extends Component {
   addCart = productId => {
     const username = this.state.username;
     this.props.addCart({ productId, username });
-    setTimeout(() => {
-      this.props.getAllProducts();
-      this.props.getCartProducts(this.state.username);
-    }, 500);
   };
 
   removeCart = productId => {
     const username = this.state.username;
     this.props.removeCart({ productId, username });
-
-    setTimeout(() => {
-      this.props.getAllProducts();
-      this.props.getCartProducts(this.state.username);
-    }, 500);
   };
-
-  
 
   render() {
     const products = this.state.filteredProducts.map(product => {
@@ -108,7 +97,7 @@ class DashBoard extends Component {
       ) {
         isInCart = true;
       }
-      //adasdsss
+
       return (
         <div key={productId} className="card">
           <div className="card__content">
@@ -154,9 +143,7 @@ class DashBoard extends Component {
         <Navbar />
         <div className="content">
           <div className="dashboard">
-          <NavbarHeader
-         
-          />
+            <NavbarHeader />
             <span className="dashboard__username">
               Welcome {this.state.firstName} {this.state.lastName}
             </span>
